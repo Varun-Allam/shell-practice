@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-Person1=X
-Person2=Y
+Person1=$X
+Person2=$Y
 
 echo "$Person1: Hi $Person2 "
 echo "$Person2: hello $Person1"
