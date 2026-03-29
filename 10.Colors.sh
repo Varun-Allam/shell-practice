@@ -5,5 +5,5 @@ G="\e[32m"
 Y="\e[33m" 
 N="\e[0m" 
 
-echo -e "$Y Hello world" 
+echo -e "$Y Hello world $N" 
 echo "check this"
