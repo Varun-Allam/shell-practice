@@ -13,7 +13,7 @@ SCRIPT_NAME=$( echo $0 | cut -d '.' -f1 )
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" 
 
 mkdir -p $LOGS_FOLDER 
-echo "Script started execute at : $(date)" &>>$LOG_FILE
+echo "Script started execute at : $(date)" | tee -a $LOG_FILE
 
 if [ $USERID -ne 0 ]; then 
     echo -e "$R ERROR $N" 
@@ -23,10 +23,10 @@ fi
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then 
-        echo -e "$R ERROR $2 $N" 
+        echo -e "$R ERROR $2 $N" | tee -a $LOG_FILE
         exit 2 
     else 
-        echo -e "$G Installing $2 success $N"
+        echo -e "$G Installing $2 success $N" | tee -a $LOG_FILE
     fi
 } 
 
@@ -35,7 +35,7 @@ if [ $? -ne 0 ]; then
     dnf install mysql -y &>>$LOG_FILE
     VALIDATE $? "mysql" 
 else 
-    echo -e "mysql already exist.... $Y Skipping $N" 
+    echo -e "mysql already exist.... $Y Skipping $N" | tee -a $LOG_FILE
 fi
 
 dnf list installed Nginx &>>$LOG_FILE #Install if not found 
@@ -43,7 +43,7 @@ if [ $? -ne 0 ]; then
     dnf install nginx -y &>>$LOG_FILE
     VALIDATE $? "nginx" 
 else 
-    echo -e "nginx already exist.... $Y Skipping $N" 
+    echo -e "nginx already exist.... $Y Skipping $N" | tee -a $LOG_FILE
 fi
 
 dnf list installed python3 &>>$LOG_FILE #Install if not found 
@@ -51,5 +51,5 @@ if [ $? -ne 0 ]; then
     dnf install python3 -y &>>$LOG_FILE
     VALIDATE $? "python3" 
 else 
-    echo -e "python already exist.... $Y Skipping $N" 
+    echo -e "python already exist.... $Y Skipping $N" | tee -a $LOG_FILE
 fi
