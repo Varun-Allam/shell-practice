@@ -29,3 +29,9 @@ VALIDATE(){
         echo -e "$G Installing $2 success $N" | tee -a $LOG_FILE
     fi
 } 
+
+
+for package in $@ 
+do 
+    echo "" 
+done
