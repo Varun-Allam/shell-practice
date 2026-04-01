@@ -48,8 +48,8 @@ fi
 
 dnf list installed python3 &>>$LOG_FILE #Install if not found 
 if [ $? -ne 0 ]; then 
-    dnf install python -y &>>$LOG_FILE
-    VALIDATE $? "python" 
+    dnf install python3 -y &>>$LOG_FILE
+    VALIDATE $? "python3" 
 else 
     echo -e "python already exist.... $Y Skipping $N" 
 fi
