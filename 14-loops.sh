@@ -10,7 +10,7 @@ N="\e[0m"
 SCRIPT_NAME=$( echo $0 | cut -d '.' -f1 )
 LOG_FILE="var/log/shell-script/$SCRIPT_NAME.log" 
 
-mkdir -p $LOGS_FOLDER 
+
 echo "Script started execute at : $(date)" | tee -a $LOG_FILE
 
 if [ $USERID -ne 0 ]; then 
