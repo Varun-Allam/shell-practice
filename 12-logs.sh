@@ -13,7 +13,7 @@ SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" 
 
 mkdir -p $LOGS_FOLDER 
-echo "Script started execute at : $(date)" 
+echo "Script started execute at : $(date)" &>>$LOG_FILE
 
 if [ $USERID -ne 0 ]; then 
     echo -e "$R ERROR $N" 
